@@ -11,30 +11,30 @@ def home(request):
             return render(request, 'userInput.html')
     else:
         return render(request, 'base.html')
-    # total_ques = 50
-
-    # easy_ques = 27    
-    # medium_ques = 33
-    # hard_ques = 40
-
-    # print(f"Easy questions will be {round((total_ques * easy_ques) / 100)} questions")
-    # print(f"Easy questions will be {round((total_ques * medium_ques) / 100)} questions")
-    # print(f"Easy questions will be {round((total_ques * hard_ques) / 100)} questions")
-
-    # question_list = []
-
-    # for diff in ['easy', 'medium','hard']:
-    #     question_list.extend(QuestionsDB.objects.filter(difficulty = diff).order_by('?')[:3])
-
-
-    # # print(question_list)
     
-    # content = ''
 
-    # for obj in question_list:
-    #     content += obj.question
+def generatePaper(request):
+    if request.method == 'POST':
+        
+        if request.POST['btn_name'] == 'Generate Paper':
+                
+                question_list = []
 
-    # return HttpResponse(f"This is the page + {content}")
+                for diff in ['easy', 'medium', 'hard']:
+
+                    no_of_ques = round((int(request.POST['no_of_ques']) * int(request.POST['percent_of_' + diff])) / 100)
+
+                    question_list.extend(QuestionsDB.objects.filter(difficulty = diff).order_by('?')[:no_of_ques])
+
+
+                # print(question_list)
+                
+                # content = ''
+
+                # for obj in question_list:
+                #     content += obj.question
+
+                return render(request, 'questionPaper.html', context = {'questions' : question_list })
 
 
 

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Question Paper | Question Paper Generator
+{% endblock title %}
+
+{% block content %}
+
+    <div class="flex flex-col justify-center space-y-10">
+
+        <div class="flex flex-col text-serif font-medium space-y-5 bg-[#012A4A] mt-10 p-5 rounded-lg drop-shadow-2xl">
+
+            {% for ques in questions  %}
+
+                {% if ques.difficulty == 'easy' %}
+                    <span class="flex text-[#A9D6E5]">{{ forloop.counter }}) {{ ques.question }} ( Easy )</span>
+
+                {% elif ques.difficulty == 'medium' %}
+                    <span class="flex text-[#A9D6E5]">{{ forloop.counter }}) {{ ques.question }} ( Medium )</span>
+
+                {% else %}
+                    <span class="flex text-[#A9D6E5]">{{ forloop.counter }}) {{ ques.question }} ( Hard )</span>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+        <div class="flex justify-center">
+            <a class="flex bg-[#A9D6E5] mb-10 px-5 py-3 text-xl text-serif font-extrabold rounded-lg" href="/">Return to HomePage</a>
+        </div>
+
+    </div>   
+
+{% endblock content %}
