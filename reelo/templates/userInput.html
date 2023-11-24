@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+    Question Paper Information | Question Paper Generator
+
+{% endblock title %}
+
+{% block content %}
+
+    <div class="flex justify-center items-center p-10 bg-[#012A4A] drop-shadow-2xl rounded-lg text-serif text-xl text-[#A9D6E5] font-medium my-20">
+
+        <form action="">
+
+            <div class="flex flex-col space-y-10">
+
+                <div class="flex flex-row space-x-20">
+                    <label class="flex basis-3/4" for="no_of_ques">Total Number of Questions</label>
+                    <input class="flex text-black basis-1/4 text-center" name="no_of_ques" type="number" min="10" max="50" value="10" required>
+                </div>
+    
+                <div class="flex flex-row space-x-20">
+                    <label class="flex basis-3/4" for="percent_of_easy">Percentage of Easy Questions</label>
+                    <input class="flex text-black basis-1/4 text-center" type="number" min="0" max="100" name="percent_of_easy" value="0" required>
+                </div>
+    
+                <div class="flex flex-row space-x-20">
+                    <label class="flex basis-3/4" for="percent_of_medium">Percentage of Medium Questions</label>
+                    <input class="flex text-black basis-1/4 text-center" type="number" min="0" max="100" name="percent_of_medium" value="0" required>
+                </div>
+    
+                <div class="flex flex-row space-x-20">
+                    <label class="flex basis-3/4" for="percent_of_hard">Percentage of Hard Questions</label>
+                    <input class="flex text-black basis-1/4 text-center" type="number" min="0" max="100" name="percent_of_hard" value="0" required>
+                </div>
+
+                <div class="flex justify-center">
+                    <input type="submit" name="btn_name" class="flex text-[#012A4A] text-2xl text-serif font-bold bg-[#A9D6E5] px-5 py-3 rounded-lg drop-shadow-xl hover:cursor-pointer" value="Generate Paper">
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock content %}

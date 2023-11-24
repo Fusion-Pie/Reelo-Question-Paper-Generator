@@ -6,30 +6,35 @@ from .models import QuestionsDB
 
 # Create your views here.
 def home(request):
-    total_ques = 50
+    if request.method == 'POST':
+        if request.POST['btn_name'] == 'Get Started !':
+            return render(request, 'userInput.html')
+    else:
+        return render(request, 'base.html')
+    # total_ques = 50
 
-    easy_ques = 27    
-    medium_ques = 33
-    hard_ques = 40
+    # easy_ques = 27    
+    # medium_ques = 33
+    # hard_ques = 40
 
-    print(f"Easy questions will be {round((total_ques * easy_ques) / 100)} questions")
-    print(f"Easy questions will be {round((total_ques * medium_ques) / 100)} questions")
-    print(f"Easy questions will be {round((total_ques * hard_ques) / 100)} questions")
+    # print(f"Easy questions will be {round((total_ques * easy_ques) / 100)} questions")
+    # print(f"Easy questions will be {round((total_ques * medium_ques) / 100)} questions")
+    # print(f"Easy questions will be {round((total_ques * hard_ques) / 100)} questions")
 
-    question_list = []
+    # question_list = []
 
-    for diff in ['easy', 'medium','hard']:
-        question_list.extend(QuestionsDB.objects.filter(difficulty = diff).order_by('?')[:3])
+    # for diff in ['easy', 'medium','hard']:
+    #     question_list.extend(QuestionsDB.objects.filter(difficulty = diff).order_by('?')[:3])
 
 
-    print(question_list)
+    # # print(question_list)
     
-    content = ''
+    # content = ''
 
-    for obj in question_list:
-        content += obj.question
+    # for obj in question_list:
+    #     content += obj.question
 
-    return HttpResponse(f"This is the page + {content}")
+    # return HttpResponse(f"This is the page + {content}")
 
 
 
