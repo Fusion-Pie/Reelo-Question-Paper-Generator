@@ -19,7 +19,7 @@
 ## Steps for Setup
 
 1. Clone the project repository 
-    > https://github.com/Fusion-Pie/Reelo-Question-Paper-Generator.git
+    >git clone  https://github.com/Fusion-Pie/Reelo-Question-Paper-Generator.git
 
 2. Open editor like Vs Code and make sure you are in the folder **reelo**
 
