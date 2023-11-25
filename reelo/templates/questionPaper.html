@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load custom_filter %}
 
 {% block title %}
     Question Paper | Question Paper Generator
@@ -12,6 +13,8 @@
 
             {% for ques in questions  %}
 
+                {% comment %} {{ques.questionId}} {% endcomment %}
+
                 {% if ques.difficulty == 'easy' %}
                     <span class="flex text-[#A9D6E5]">{{ forloop.counter }}) {{ ques.question }} ( Easy )</span>
 
@@ -22,6 +25,12 @@
                     <span class="flex text-[#A9D6E5]">{{ forloop.counter }}) {{ ques.question }} ( Hard )</span>
 
                 {% endif %}
+
+                <div class="flex flex-row space-x-2">
+                    {% for option in ques.correctAns|randomizeAnswers:ques.incorrectAns %}
+                        <span class="text-[#A9D6E5]">{{ forloop.counter|to_char }}) {{ option }}  </span>
+                    {% endfor %}
+                </div>
 
             {% endfor %}
 
